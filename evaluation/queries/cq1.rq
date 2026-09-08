@@ -1,0 +1,19 @@
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dul:  <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#>
+PREFIX soma: <http://www.ease-crc.org/ont/SOMA.owl#>
+PREFIX mai:  <http://www.istc.cnr.it/pst/ontologies/2024/migrai#>
+SELECT DISTINCT ?person ?quality ?method ?task
+WHERE {
+  ?assistedRole rdf:type mai:AssistedPerson ;
+                dul:isRoleOf ?person .
+  ?quality rdf:type mai:HumanQuality ;
+           dul:isQualityOf ?person .
+  ?method rdf:type mai:AssistiveMethod ;
+          mai:hasEffectOn ?quality .
+  OPTIONAL {
+    ?task rdf:type mai:EmbodiedTask ;
+          dul:isDefinedIn ?method .
+  }
+}
+ORDER BY ?person ?quality ?method ?task

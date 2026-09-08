@@ -1,0 +1,826 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.istc.cnr.it/pst/ontologies/2024/migrai/"
+     xml:base="http://www.istc.cnr.it/pst/ontologies/2024/migrai/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:SOMA="http://www.ease-crc.org/ont/SOMA.owl#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai">
+        <owl:versionIRI rdf:resource="http:/www.istc.cnr.it/pst/ontologies/2024/migrai/0.0.1"/>
+        <owl:imports rdf:resource="http://www.ease-crc.org/ont/SOMA.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#describesFunctionality -->
+
+    <owl:ObjectProperty rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#describesFunctionality">
+        <rdfs:subPropertyOf rdf:resource="http://www.ease-crc.org/ont/SOMA.owl#describesQuality"/>
+        <rdfs:domain rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Method"/>
+        <rdfs:range rdf:resource="http://www.ease-crc.org/ont/SOMA.owl#Capability"/>
+        <rdfs:comment>Relates a method with a capability necessary for its execution and thus characterizing the functional quality of that capability</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#hasContext -->
+
+    <owl:ObjectProperty rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#hasContext">
+        <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isReferenceOf"/>
+        <rdfs:range rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#InteractionContext"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#hasEffectOn -->
+
+    <owl:ObjectProperty rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#hasEffectOn">
+        <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#associatedWith"/>
+        <rdfs:domain rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#AgentiveMethod"/>
+        <rdfs:range rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Quality"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#ActivityMonitoring -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#ActivityMonitoring">
+        <rdfs:subClassOf rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#Monitoring"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#AffectiveStateDetection -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#AffectiveStateDetection">
+        <rdfs:subClassOf rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#EntityDetectionCapability"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#AffectiveStateMonitoring -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#AffectiveStateMonitoring">
+        <rdfs:subClassOf rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#HealthStateMonitoring"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#AgentiveMethod -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#AgentiveMethod">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Method"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#describesFunctionality"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.ease-crc.org/ont/SOMA.owl#Capability"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://www.ease-crc.org/ont/SOMA.owl#isQualeOf"/>
+                                <owl:allValuesFrom rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#Embodiment"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#hasEffectOn"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Quality"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://www.ease-crc.org/ont/SOMA.owl#isQualeOf"/>
+                                <owl:allValuesFrom rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#PhysicalObject"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>A description that defines procedural execution of tasks that can be carried out thorugh some embodied agentive entity.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#AssistedPerson -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#AssistedPerson">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Role"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasQuality"/>
+                <owl:someValuesFrom rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#HumanQuality"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isRoleOf"/>
+                <owl:allValuesFrom rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#AssistiveMethod -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#AssistiveMethod">
+        <rdfs:subClassOf rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#AgentiveMethod"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#hasEffectOn"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Quality"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isQualityOf"/>
+                                <owl:allValuesFrom>
+                                    <owl:Class>
+                                        <owl:intersectionOf rdf:parseType="Collection">
+                                            <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person"/>
+                                            <owl:Restriction>
+                                                <owl:onProperty rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasRole"/>
+                                                <owl:someValuesFrom rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#AssistedPerson"/>
+                                            </owl:Restriction>
+                                        </owl:intersectionOf>
+                                    </owl:Class>
+                                </owl:allValuesFrom>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:onClass>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>Describe methods that are carried out by agents with the aim of providing a target Person with assistance. Each assistive method describes a type of procedure targeting one or more Quality of an assisted Person and can be executed thorugh a certain number of actions</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#CognitiveStimulation -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#CognitiveStimulation">
+        <rdfs:subClassOf rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#Stimulation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#CommunicationCapability -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#CommunicationCapability">
+        <rdfs:subClassOf rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#SocialCapability"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#ComputationalCapability -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#ComputationalCapability">
+        <rdfs:subClassOf rdf:resource="http://www.ease-crc.org/ont/SOMA.owl#Capability"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#DailyActivityMonitoring -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#DailyActivityMonitoring">
+        <rdfs:subClassOf rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#ActivityMonitoring"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#DomesticContext -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#DomesticContext">
+        <rdfs:subClassOf rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#InteractionContext"/>
+        <owl:disjointWith rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#ProfessionalContext"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#EmbodiedTask -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#EmbodiedTask">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Task"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isDefinedIn"/>
+                <owl:allValuesFrom rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#AgentiveMethod"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#Embodiment -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#Embodiment">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#DesignedArtifact"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#hasContext"/>
+                <owl:allValuesFrom rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#InteractionContext"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasQuality"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.ease-crc.org/ont/SOMA.owl#Capability"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#Entertainment -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#Entertainment">
+        <rdfs:subClassOf rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#AssistiveMethod"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#describesFunctionality"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#CommunicationCapability"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#EntityDetectionCapability -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#EntityDetectionCapability">
+        <rdfs:subClassOf rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#PerceptionCapability"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#EnvironmentPerceptionCapability -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#EnvironmentPerceptionCapability">
+        <rdfs:subClassOf rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#PerceptionCapability"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#EventRecognitionCapability -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#EventRecognitionCapability">
+        <rdfs:subClassOf rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#EnvironmentPerceptionCapability"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#FaceDetection -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#FaceDetection">
+        <rdfs:subClassOf rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#EntityDetectionCapability"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#GraphicCommunication -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#GraphicCommunication">
+        <rdfs:subClassOf rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#CommunicationCapability"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#HealthStateMonitoring -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#HealthStateMonitoring">
+        <rdfs:subClassOf rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#Monitoring"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#HumanActivityDetection -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#HumanActivityDetection">
+        <rdfs:subClassOf rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#HumanBehaviorPerceptionCapability"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#HumanBehaviorPerceptionCapability -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#HumanBehaviorPerceptionCapability">
+        <rdfs:subClassOf rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#EnvironmentPerceptionCapability"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#HumanIntentionRecognition -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#HumanIntentionRecognition">
+        <rdfs:subClassOf rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#HumanBehaviorPerceptionCapability"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#HumanQuality -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#HumanQuality">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Quality"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#HumanoidRobot -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#HumanoidRobot">
+        <rdfs:subClassOf rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#Embodiment"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasQuality"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#ComputationalCapability"/>
+                            <rdf:Description rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#PerceptionCapability"/>
+                            <rdf:Description rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#PhysicalCapability"/>
+                            <rdf:Description rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#SocialCapability"/>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#InteractionContext -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#InteractionContext">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Configuration"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#hasContext"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:someValuesFrom rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#AssistedPerson"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#MigratableAgent -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#MigratableAgent">
+        <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Role"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#classifies"/>
+                <owl:someValuesFrom rdf:resource="http://www.ease-crc.org/ont/SOMA.owl#CognitiveAgent"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasPart"/>
+                <owl:allValuesFrom rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#Embodiment"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#MigrationOpportunity -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#MigrationOpportunity">
+        <rdfs:subClassOf rdf:resource="http://www.ease-crc.org/ont/SOMA.owl#Affordance"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ease-crc.org/ont/SOMA.owl#definesBearer"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#MigratableAgent"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ease-crc.org/ont/SOMA.owl#definesTrigger"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#SuitableEmbodiment"/>
+                            <owl:Restriction>
+                                <owl:onProperty>
+                                    <rdf:Description>
+                                        <owl:inverseOf rdf:resource="http://www.ease-crc.org/ont/SOMA.owl#definesBearer"/>
+                                    </rdf:Description>
+                                </owl:onProperty>
+                                <owl:someValuesFrom rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#TaskOpportunity"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:onClass>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#Monitoring -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#Monitoring">
+        <rdfs:subClassOf rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#AssistiveMethod"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#describesFunctionality"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#PerceptionCapability"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#MotionCapability -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#MotionCapability">
+        <rdfs:subClassOf rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#PhysicalCapability"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#NavigationCapability -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#NavigationCapability">
+        <rdfs:subClassOf rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#MotionCapability"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#ObjectDetection -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#ObjectDetection">
+        <rdfs:subClassOf rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#EntityDetectionCapability"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#ObjectInteractionCapability -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#ObjectInteractionCapability">
+        <rdfs:subClassOf rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#PhysicalCapability"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#ObjectLifting -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#ObjectLifting">
+        <rdfs:subClassOf rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#ObjectInteractionCapability"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#ObjectManipulation -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#ObjectManipulation">
+        <rdfs:subClassOf rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#ObjectInteractionCapability"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#Orientation -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#Orientation">
+        <rdfs:subClassOf rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#AssistiveMethod"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#describesFunctionality"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#SocialCapability"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#PerceptionCapability -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#PerceptionCapability">
+        <rdfs:subClassOf rdf:resource="http://www.ease-crc.org/ont/SOMA.owl#Capability"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#PhysicalActivityMonitoring -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#PhysicalActivityMonitoring">
+        <rdfs:subClassOf rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#ActivityMonitoring"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#PhysicalCapability -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#PhysicalCapability">
+        <rdfs:subClassOf rdf:resource="http://www.ease-crc.org/ont/SOMA.owl#Capability"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#PhysicalStimulation -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#PhysicalStimulation">
+        <rdfs:subClassOf rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#Stimulation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#PhysiologicalStateMonitoring -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#PhysiologicalStateMonitoring">
+        <rdfs:subClassOf rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#HealthStateMonitoring"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#ProfessionalContext -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#ProfessionalContext">
+        <rdfs:subClassOf rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#InteractionContext"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#SocialActivityMonitoring -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#SocialActivityMonitoring">
+        <rdfs:subClassOf rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#ActivityMonitoring"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#SocialCapability -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#SocialCapability">
+        <rdfs:subClassOf rdf:resource="http://www.ease-crc.org/ont/SOMA.owl#Capability"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#SocialStimulation -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#SocialStimulation">
+        <rdfs:subClassOf rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#Stimulation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#Stimulation -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#Stimulation">
+        <rdfs:subClassOf rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#AssistiveMethod"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#describesFunctionality"/>
+                <owl:someValuesFrom rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#PhysicalCapability"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#describesFunctionality"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#PerceptionCapability"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#StressStateMonitoring -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#StressStateMonitoring">
+        <rdfs:subClassOf rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#HealthStateMonitoring"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#SuitableEmbodiment -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#SuitableEmbodiment">
+        <rdfs:subClassOf rdf:resource="http://www.ease-crc.org/ont/SOMA.owl#PerformerRole"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ease-crc.org/ont/SOMA.owl#hasTask"/>
+                <owl:someValuesFrom rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#EmbodiedTask"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ease-crc.org/ont/SOMA.owl#isPerformerAffordedBy"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.ease-crc.org/ont/SOMA.owl#Capability"/>
+                            <owl:Restriction>
+                                <owl:onProperty>
+                                    <rdf:Description>
+                                        <owl:inverseOf rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#describesFunctionality"/>
+                                    </rdf:Description>
+                                </owl:onProperty>
+                                <owl:someValuesFrom rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#AgentiveMethod"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#classifies"/>
+                <owl:someValuesFrom rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#MigratableAgent"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isDefinedIn"/>
+                <owl:allValuesFrom rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#InteractionContext"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isRoleOf"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#Embodiment"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasQuality"/>
+                                <owl:someValuesFrom rdf:resource="http://www.ease-crc.org/ont/SOMA.owl#Capability"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#TV -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#TV">
+        <rdfs:subClassOf rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#Embodiment"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasQuality"/>
+                <owl:someValuesFrom rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#CommunicationCapability"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#Tablet -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#Tablet">
+        <rdfs:subClassOf rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#Embodiment"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasQuality"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#CommunicationCapability"/>
+                            <rdf:Description rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#ComputationalCapability"/>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#TaskOpportunity -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#TaskOpportunity">
+        <rdfs:subClassOf rdf:resource="http://www.ease-crc.org/ont/SOMA.owl#Affordance"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ease-crc.org/ont/SOMA.owl#definesBearer"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#SuitableEmbodiment"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isRoleOf"/>
+                                <owl:someValuesFrom>
+                                    <owl:Class>
+                                        <owl:intersectionOf rdf:parseType="Collection">
+                                            <rdf:Description rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#Embodiment"/>
+                                            <owl:Restriction>
+                                                <owl:onProperty rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#hasContext"/>
+                                                <owl:someValuesFrom rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#InteractionContext"/>
+                                            </owl:Restriction>
+                                        </owl:intersectionOf>
+                                    </owl:Class>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:onClass>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ease-crc.org/ont/SOMA.owl#definesTrigger"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#AssistedPerson"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isRoleOf"/>
+                                <owl:someValuesFrom>
+                                    <owl:Class>
+                                        <owl:intersectionOf rdf:parseType="Collection">
+                                            <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Person"/>
+                                            <owl:Restriction>
+                                                <owl:onProperty rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#hasContext"/>
+                                                <owl:someValuesFrom rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#InteractionContext"/>
+                                            </owl:Restriction>
+                                            <owl:Restriction>
+                                                <owl:onProperty rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasQuality"/>
+                                                <owl:someValuesFrom rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#HumanQuality"/>
+                                            </owl:Restriction>
+                                        </owl:intersectionOf>
+                                    </owl:Class>
+                                </owl:someValuesFrom>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:onClass>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#definesTask"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#EmbodiedTask"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#TextualCommunication -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#TextualCommunication">
+        <rdfs:subClassOf rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#CommunicationCapability"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.istc.cnr.it/pst/ontologies/2024/migrai#VerbalCommunication -->
+
+    <owl:Class rdf:about="http://www.istc.cnr.it/pst/ontologies/2024/migrai#VerbalCommunication">
+        <rdfs:subClassOf rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#CommunicationCapability"/>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+

@@ -1,0 +1,13 @@
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dul:  <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#>
+PREFIX soma: <http://www.ease-crc.org/ont/SOMA.owl#>
+PREFIX mai:  <http://www.istc.cnr.it/pst/ontologies/2024/migrai#>
+SELECT DISTINCT ?context ?contextType ?embodiment
+WHERE {
+  ?embodiment rdf:type mai:Embodiment ;
+              mai:hasContext ?context .
+  ?context rdf:type ?contextType .
+  ?contextType rdfs:subClassOf* mai:InteractionContext .
+}
+ORDER BY ?context ?embodiment

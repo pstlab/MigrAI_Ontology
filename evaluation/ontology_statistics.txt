@@ -1,0 +1,11 @@
+Ontology file: MigrAI_v0.2.rdf
+Parsed RDF triples: 374
+MAI-defined named classes: 53
+MAI-defined object properties: 3
+MAI-defined datatype properties: 0
+Explicit owl:imports: http://www.ease-crc.org/ont/SOMA.owl
+Named MAI class-hierarchy cycles: 0
+Unconnected MAI classes/properties in local structural scan: 0
+MAI entities with neither rdfs:label nor rdfs:comment: 53 / 56
+MAI properties with missing explicit domain or range: hasContext (domain missing; range InteractionContext)
+MAI properties with multiple explicit domains or ranges: 0

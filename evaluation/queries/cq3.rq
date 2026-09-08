@@ -1,0 +1,27 @@
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dul:  <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#>
+PREFIX soma: <http://www.ease-crc.org/ont/SOMA.owl#>
+PREFIX mai:  <http://www.istc.cnr.it/pst/ontologies/2024/migrai#>
+SELECT DISTINCT ?task ?method ?suitable ?embodiment
+WHERE {
+  ?suitable rdf:type mai:SuitableEmbodiment ;
+            dul:isRoleOf ?embodiment ;
+            soma:hasTask ?task .
+  ?task rdf:type mai:EmbodiedTask ;
+        dul:isDefinedIn ?method .
+  ?method rdf:type mai:AssistiveMethod .
+  ?embodiment rdf:type mai:Embodiment .
+
+  FILTER NOT EXISTS {
+    ?method mai:describesFunctionality ?requiredCap .
+    ?requiredCap rdf:type ?requiredType .
+    ?requiredType rdfs:subClassOf* soma:Capability .
+    FILTER NOT EXISTS {
+      ?embodiment dul:hasQuality ?providedCap .
+      ?providedCap rdf:type ?providedType .
+      ?providedType rdfs:subClassOf* ?requiredType .
+    }
+  }
+}
+ORDER BY ?task ?embodiment

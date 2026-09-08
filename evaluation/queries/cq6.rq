@@ -1,0 +1,21 @@
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dul:  <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#>
+PREFIX soma: <http://www.ease-crc.org/ont/SOMA.owl#>
+PREFIX mai:  <http://www.istc.cnr.it/pst/ontologies/2024/migrai#>
+SELECT DISTINCT ?migration ?agent ?candidateEmbodiment ?taskOpportunity ?task
+WHERE {
+  ?migration rdf:type mai:MigrationOpportunity ;
+             soma:definesBearer ?agent ;
+             soma:definesTrigger ?suitable .
+  ?suitable rdf:type mai:SuitableEmbodiment ;
+            dul:isRoleOf ?candidateEmbodiment ;
+            soma:hasTask ?task .
+  ?taskOpportunity rdf:type mai:TaskOpportunity ;
+                   soma:definesBearer ?suitable ;
+                   dul:definesTask ?task .
+  ?agent rdf:type mai:MigratableAgent .
+  ?candidateEmbodiment rdf:type mai:Embodiment .
+  ?task rdf:type mai:EmbodiedTask .
+}
+ORDER BY ?migration ?task ?candidateEmbodiment

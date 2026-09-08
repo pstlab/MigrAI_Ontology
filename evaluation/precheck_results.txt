@@ -1,0 +1,9 @@
+Triples: 374
+MAI classes: 53
+MAI object properties: 3
+P04-like unconnected elements: 0
+P06-like named hierarchy cycle: NO
+P08-like missing label/comment: 53 / 56
+P11-like missing domain/range:
+  - hasContext: domain=no, range=yes
+P19-like multiple domain/range: 0

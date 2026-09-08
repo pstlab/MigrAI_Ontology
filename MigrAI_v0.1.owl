@@ -1,0 +1,571 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.istc.cnr.it/pst/ontologies/2024/migrai"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.istc.cnr.it/pst/ontologies/2024/migrai"
+     versionIRI="http:/www.istc.cnr.it/pst/ontologies/2024/migrai/0.0.2">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Import>http://www.ease-crc.org/ont/SOMA.owl</Import>
+    <Declaration>
+        <Class IRI="#ActivityMonitoring"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AffectiveStateMonitoring"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AssistiveTask"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CognitiveStimulation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DailyActivityMonitoring"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DomesticContext"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#EmbodiedAgent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Embodiment"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Entertainment"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#EntityDetectionCapability"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#EnvironmentPerceptionCapability"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#EventRecognitionCapability"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#HapticInteractionCapability"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#HealthStateMonitoring"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#HospitalContext"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#HumanActivityDetection"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#HumanAffectiveStateDetection"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#HumanFaceDetection"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#HumanIntentDetection"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#HumanInteractionAffordance"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#HumanInteractionCapability"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#HumanPerceptionCapability"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#HumanRobotInteractionContext"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#HumanStateDetection"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#HumanoidRobot"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Monitoring"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MotionCapability"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#NatualLanguageInteractionCapability"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#NavigationCapability"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ObjectDetection"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ObjectInteractionCapability"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ObjectManipulation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ObjectPicking"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ObjectPlacing"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Orientation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PerceptionCapability"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PhysicalActivityMonitoring"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PhysicalCapability"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PhysicalStimulation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PhysiologicalStateMonitoring"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RehabilitationContext"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SocialActivityMonitoring"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SocialAffordance"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SocialCapability"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SocialStimulation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Stimulation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#StressLevelMonitoring"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TV"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Tablet"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TextualInteractionCapability"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#VerbalInteractionCapability"/>
+    </Declaration>
+    <EquivalentClasses>
+        <Class IRI="#AssistiveTask"/>
+        <ObjectIntersectionOf>
+            <Class IRI="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Task"/>
+            <ObjectMinCardinality cardinality="1">
+                <ObjectProperty IRI="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#associatedWith"/>
+                <Class IRI="http://www.ease-crc.org/ont/SOMA.owl#Capability"/>
+            </ObjectMinCardinality>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#DomesticContext"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#HumanRobotInteractionContext"/>
+            <ObjectAllValuesFrom>
+                <ObjectProperty IRI="http://www.ease-crc.org/ont/SOMA.owl#hasBinding"/>
+                <ObjectIntersectionOf>
+                    <Class IRI="#HumanInteractionAffordance"/>
+                    <ObjectAllValuesFrom>
+                        <ObjectProperty IRI="http://www.ease-crc.org/ont/SOMA.owl#hasBindingFiller"/>
+                        <ObjectUnionOf>
+                            <Class IRI="#TV"/>
+                            <Class IRI="#Tablet"/>
+                        </ObjectUnionOf>
+                    </ObjectAllValuesFrom>
+                </ObjectIntersectionOf>
+            </ObjectAllValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#EmbodiedAgent"/>
+        <ObjectIntersectionOf>
+            <Class IRI="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Role"/>
+            <ObjectAllValuesFrom>
+                <ObjectProperty IRI="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#classifies"/>
+                <Class IRI="#Embodiment"/>
+            </ObjectAllValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Embodiment"/>
+        <ObjectIntersectionOf>
+            <Class IRI="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#DesignedArtifact"/>
+            <ObjectMinCardinality cardinality="1">
+                <ObjectProperty IRI="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#associatedWith"/>
+                <Class IRI="http://www.ease-crc.org/ont/SOMA.owl#Capability"/>
+            </ObjectMinCardinality>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Entertainment"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#AssistiveTask"/>
+            <ObjectAllValuesFrom>
+                <ObjectProperty IRI="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#associatedWith"/>
+                <Class IRI="#SocialCapability"/>
+            </ObjectAllValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#HospitalContext"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#HumanRobotInteractionContext"/>
+            <ObjectAllValuesFrom>
+                <ObjectProperty IRI="http://www.ease-crc.org/ont/SOMA.owl#hasBinding"/>
+                <ObjectIntersectionOf>
+                    <Class IRI="#HumanInteractionAffordance"/>
+                    <ObjectAllValuesFrom>
+                        <ObjectProperty IRI="http://www.ease-crc.org/ont/SOMA.owl#hasBindingFiller"/>
+                        <ObjectUnionOf>
+                            <Class IRI="#HumanoidRobot"/>
+                            <Class IRI="#Tablet"/>
+                        </ObjectUnionOf>
+                    </ObjectAllValuesFrom>
+                </ObjectIntersectionOf>
+            </ObjectAllValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#HumanInteractionAffordance"/>
+        <ObjectIntersectionOf>
+            <Class IRI="http://www.ease-crc.org/ont/SOMA.owl#RoleFillerBinding"/>
+            <ObjectAllValuesFrom>
+                <ObjectProperty IRI="http://www.ease-crc.org/ont/SOMA.owl#hasBindingFiller"/>
+                <Class IRI="#Embodiment"/>
+            </ObjectAllValuesFrom>
+            <ObjectAllValuesFrom>
+                <ObjectProperty IRI="http://www.ease-crc.org/ont/SOMA.owl#hasBindingRole"/>
+                <Class IRI="#EmbodiedAgent"/>
+            </ObjectAllValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#HumanRobotInteractionContext"/>
+        <ObjectIntersectionOf>
+            <Class IRI="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Configuration"/>
+            <ObjectAllValuesFrom>
+                <ObjectProperty IRI="http://www.ease-crc.org/ont/SOMA.owl#hasBinding"/>
+                <Class IRI="#HumanInteractionAffordance"/>
+            </ObjectAllValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#HumanoidRobot"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Embodiment"/>
+            <ObjectAllValuesFrom>
+                <ObjectProperty IRI="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#associatedWith"/>
+                <ObjectUnionOf>
+                    <Class IRI="#PerceptionCapability"/>
+                    <Class IRI="#PhysicalCapability"/>
+                    <Class IRI="#SocialCapability"/>
+                </ObjectUnionOf>
+            </ObjectAllValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Monitoring"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#AssistiveTask"/>
+            <ObjectAllValuesFrom>
+                <ObjectProperty IRI="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#associatedWith"/>
+                <Class IRI="#PerceptionCapability"/>
+            </ObjectAllValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Orientation"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#AssistiveTask"/>
+            <ObjectAllValuesFrom>
+                <ObjectProperty IRI="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#associatedWith"/>
+                <Class IRI="#HumanInteractionCapability"/>
+            </ObjectAllValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#RehabilitationContext"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#HumanRobotInteractionContext"/>
+            <ObjectAllValuesFrom>
+                <ObjectProperty IRI="http://www.ease-crc.org/ont/SOMA.owl#hasBinding"/>
+                <ObjectIntersectionOf>
+                    <Class IRI="#HumanInteractionAffordance"/>
+                    <ObjectAllValuesFrom>
+                        <ObjectProperty IRI="http://www.ease-crc.org/ont/SOMA.owl#hasBindingFiller"/>
+                        <Class IRI="#HumanoidRobot"/>
+                    </ObjectAllValuesFrom>
+                </ObjectIntersectionOf>
+            </ObjectAllValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Stimulation"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#AssistiveTask"/>
+            <ObjectAllValuesFrom>
+                <ObjectProperty IRI="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#associatedWith"/>
+                <ObjectUnionOf>
+                    <Class IRI="#HumanInteractionCapability"/>
+                    <Class IRI="#PhysicalCapability"/>
+                </ObjectUnionOf>
+            </ObjectAllValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#TV"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Embodiment"/>
+            <ObjectAllValuesFrom>
+                <ObjectProperty IRI="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#associatedWith"/>
+                <Class IRI="#SocialCapability"/>
+            </ObjectAllValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Tablet"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Embodiment"/>
+            <ObjectAllValuesFrom>
+                <ObjectProperty IRI="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#associatedWith"/>
+                <ObjectUnionOf>
+                    <Class IRI="#PerceptionCapability"/>
+                    <Class IRI="#SocialCapability"/>
+                </ObjectUnionOf>
+            </ObjectAllValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <SubClassOf>
+        <Class IRI="#ActivityMonitoring"/>
+        <Class IRI="#Monitoring"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AffectiveStateMonitoring"/>
+        <Class IRI="#HealthStateMonitoring"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AssistiveTask"/>
+        <Class IRI="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Task"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CognitiveStimulation"/>
+        <Class IRI="#Stimulation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DailyActivityMonitoring"/>
+        <Class IRI="#ActivityMonitoring"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DomesticContext"/>
+        <Class IRI="#HumanRobotInteractionContext"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#EmbodiedAgent"/>
+        <Class IRI="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Role"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Embodiment"/>
+        <Class IRI="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#DesignedArtifact"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Entertainment"/>
+        <Class IRI="#AssistiveTask"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#EntityDetectionCapability"/>
+        <Class IRI="#PerceptionCapability"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#EnvironmentPerceptionCapability"/>
+        <Class IRI="#PerceptionCapability"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#EventRecognitionCapability"/>
+        <Class IRI="#EnvironmentPerceptionCapability"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HapticInteractionCapability"/>
+        <Class IRI="#HumanInteractionCapability"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HealthStateMonitoring"/>
+        <Class IRI="#Monitoring"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HospitalContext"/>
+        <Class IRI="#HumanRobotInteractionContext"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HumanActivityDetection"/>
+        <Class IRI="#HumanPerceptionCapability"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HumanAffectiveStateDetection"/>
+        <Class IRI="#HumanStateDetection"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HumanFaceDetection"/>
+        <Class IRI="#HumanPerceptionCapability"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HumanIntentDetection"/>
+        <Class IRI="#HumanPerceptionCapability"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HumanInteractionAffordance"/>
+        <Class IRI="#SocialAffordance"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HumanInteractionCapability"/>
+        <Class IRI="#SocialCapability"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HumanPerceptionCapability"/>
+        <Class IRI="#EntityDetectionCapability"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HumanRobotInteractionContext"/>
+        <Class IRI="http://www.ease-crc.org/ont/SOMA.owl#Configuration"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HumanStateDetection"/>
+        <Class IRI="#HumanPerceptionCapability"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HumanoidRobot"/>
+        <Class IRI="#Embodiment"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Monitoring"/>
+        <Class IRI="#AssistiveTask"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MotionCapability"/>
+        <Class IRI="#PhysicalCapability"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#NatualLanguageInteractionCapability"/>
+        <Class IRI="#VerbalInteractionCapability"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#NavigationCapability"/>
+        <Class IRI="#MotionCapability"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ObjectDetection"/>
+        <Class IRI="#EnvironmentPerceptionCapability"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ObjectInteractionCapability"/>
+        <Class IRI="#PhysicalCapability"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ObjectManipulation"/>
+        <Class IRI="#ObjectInteractionCapability"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ObjectPicking"/>
+        <Class IRI="#ObjectManipulation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ObjectPlacing"/>
+        <Class IRI="#ObjectManipulation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Orientation"/>
+        <Class IRI="#AssistiveTask"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PerceptionCapability"/>
+        <Class IRI="http://www.ease-crc.org/ont/SOMA.owl#Capability"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PhysicalActivityMonitoring"/>
+        <Class IRI="#ActivityMonitoring"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PhysicalCapability"/>
+        <Class IRI="http://www.ease-crc.org/ont/SOMA.owl#Capability"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PhysicalStimulation"/>
+        <Class IRI="#Stimulation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PhysiologicalStateMonitoring"/>
+        <Class IRI="#HealthStateMonitoring"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RehabilitationContext"/>
+        <Class IRI="#HumanRobotInteractionContext"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SocialActivityMonitoring"/>
+        <Class IRI="#ActivityMonitoring"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SocialAffordance"/>
+        <Class IRI="http://www.ease-crc.org/ont/SOMA.owl#Affordance"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SocialCapability"/>
+        <Class IRI="http://www.ease-crc.org/ont/SOMA.owl#Capability"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SocialStimulation"/>
+        <Class IRI="#Stimulation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Stimulation"/>
+        <Class IRI="#AssistiveTask"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#StressLevelMonitoring"/>
+        <Class IRI="#HealthStateMonitoring"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TV"/>
+        <Class IRI="#Embodiment"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tablet"/>
+        <Class IRI="#Embodiment"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TextualInteractionCapability"/>
+        <Class IRI="#HumanInteractionCapability"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#VerbalInteractionCapability"/>
+        <Class IRI="#HumanInteractionCapability"/>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="#PerceptionCapability"/>
+        <Class IRI="#PhysicalCapability"/>
+        <Class IRI="#SocialCapability"/>
+    </DisjointClasses>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Paste the exact RDF/XML of the FINAL PUBLIC RELEASE inside the CDATA block,
+  then POST this request to https://oops.linkeddata.es/rest with
+  Content-Type: application/xml. Leave <Pitfalls></Pitfalls> empty to scan all
+  implemented pitfalls. See https://oops.linkeddata.es/webservice.html.
+-->
+<OOPSRequest>
+  <OntologyUrl></OntologyUrl>
+  <OntologyContent><![CDATA[
+    <!-- PASTE FINAL ONTOLOGY RDF/XML HERE -->
+  ]]></OntologyContent>
+  <Pitfalls></Pitfalls>
+  <OutputFormat>XML</OutputFormat>
+</OOPSRequest>

@@ -144,6 +144,12 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isDefinedIn"/>
+                <owl:someValuesFrom rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#InteractionContext"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isRoleOf"/>
                 <owl:allValuesFrom rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#NaturalPerson"/>
             </owl:Restriction>
@@ -412,6 +418,12 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isDefinedIn"/>
+                <owl:someValuesFrom rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#InteractionContext"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasPart"/>
                 <owl:allValuesFrom rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#Embodiment"/>
             </owl:Restriction>
@@ -663,12 +675,6 @@
                         </owl:intersectionOf>
                     </owl:Class>
                 </owl:someValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#classifies"/>
-                <owl:someValuesFrom rdf:resource="http://www.istc.cnr.it/pst/ontologies/2024/migrai#MigratableAgent"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>

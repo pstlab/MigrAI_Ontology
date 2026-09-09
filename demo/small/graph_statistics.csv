@@ -1,0 +1,8 @@
+metric,value
+Ontology/TBox triples loaded,378
+Triples after demo ABox creation,412
+RDF triples after materialization,431
+Demo SuitableEmbodiment roles,2
+Demo EmbodiedTask individuals,2
+Demo TaskOpportunity individuals,1
+Demo MigrationOpportunity individuals,1

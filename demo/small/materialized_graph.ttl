@@ -1,0 +1,402 @@
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix ex: <http://www.istc.cnr.it/pst/ontologies/2024/migrai/demo#> .
+@prefix mai: <http://www.istc.cnr.it/pst/ontologies/2024/migrai#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix soma: <http://www.ease-crc.org/ont/SOMA.owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.istc.cnr.it/pst/ontologies/2024/migrai> a owl:Ontology ;
+    owl:imports <http://www.ease-crc.org/ont/SOMA.owl> ;
+    owl:versionIRI <http://www.istc.cnr.it/www.istc.cnr.it/pst/ontologies/2024/migrai/0.0.1> .
+
+mai:AffectiveStateDetection a owl:Class ;
+    rdfs:subClassOf mai:EntityDetectionCapability .
+
+mai:AffectiveStateMonitoring a owl:Class ;
+    rdfs:subClassOf mai:HealthStateMonitoring .
+
+mai:CognitiveStimulation a owl:Class ;
+    rdfs:subClassOf mai:Stimulation .
+
+mai:DailyActivityMonitoring a owl:Class ;
+    rdfs:subClassOf mai:ActivityMonitoring .
+
+mai:DomesticContext a owl:Class ;
+    rdfs:subClassOf mai:InteractionContext ;
+    owl:disjointWith mai:ProfessionalContext .
+
+mai:Entertainment a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass mai:CommunicationCapability ;
+            owl:onProperty mai:describesFunctionality ],
+        mai:AssistiveMethod .
+
+mai:EventRecognitionCapability a owl:Class ;
+    rdfs:subClassOf mai:EnvironmentPerceptionCapability .
+
+mai:FaceDetection a owl:Class ;
+    rdfs:subClassOf mai:EntityDetectionCapability .
+
+mai:GraphicCommunication a owl:Class ;
+    rdfs:subClassOf mai:CommunicationCapability .
+
+mai:HumanActivityDetection a owl:Class ;
+    rdfs:subClassOf mai:HumanBehaviorPerceptionCapability .
+
+mai:HumanIntentionRecognition a owl:Class ;
+    rdfs:subClassOf mai:HumanBehaviorPerceptionCapability .
+
+mai:HumanoidRobot a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty dul:hasQuality ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:intersectionOf ( mai:ComputationalCapability mai:PerceptionCapability mai:PhysicalCapability mai:SocialCapability ) ] ],
+        mai:Embodiment .
+
+mai:ObjectDetection a owl:Class ;
+    rdfs:subClassOf mai:EntityDetectionCapability .
+
+mai:ObjectLifting a owl:Class ;
+    rdfs:subClassOf mai:ObjectInteractionCapability .
+
+mai:ObjectManipulation a owl:Class ;
+    rdfs:subClassOf mai:ObjectInteractionCapability .
+
+mai:Orientation a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass mai:SocialCapability ;
+            owl:onProperty mai:describesFunctionality ],
+        mai:AssistiveMethod .
+
+mai:PhysicalActivityMonitoring a owl:Class ;
+    rdfs:subClassOf mai:ActivityMonitoring .
+
+mai:PhysicalStimulation a owl:Class ;
+    rdfs:subClassOf mai:Stimulation .
+
+mai:PhysiologicalStateMonitoring a owl:Class ;
+    rdfs:subClassOf mai:HealthStateMonitoring .
+
+mai:SocialActivityMonitoring a owl:Class ;
+    rdfs:subClassOf mai:ActivityMonitoring .
+
+mai:SocialStimulation a owl:Class ;
+    rdfs:subClassOf mai:Stimulation .
+
+mai:StressStateMonitoring a owl:Class ;
+    rdfs:subClassOf mai:HealthStateMonitoring .
+
+mai:TV a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty dul:hasQuality ;
+            owl:someValuesFrom mai:CommunicationCapability ],
+        mai:Embodiment .
+
+mai:TextualCommunication a owl:Class ;
+    rdfs:subClassOf mai:CommunicationCapability .
+
+mai:VerbalCommunication a owl:Class ;
+    rdfs:subClassOf mai:CommunicationCapability .
+
+ex:MigrationOpportunity_TaskOpportunity_AssistedPatientRole_Suitable_Tablet01_OrientationMethod_Task_Tablet01_OrientationMethod a mai:MigrationOpportunity ;
+    soma:definesBearer ex:PersistentAgent ;
+    soma:definesTrigger ex:Suitable_Tablet01_OrientationMethod .
+
+ex:PassiveDisplay01 a mai:Embodiment ;
+    mai:hasContext ex:HospitalRoomContext .
+
+ex:Suitable_Robot01_OrientationMethod a mai:SuitableEmbodiment ;
+    soma:hasTask ex:Task_Robot01_OrientationMethod ;
+    dul:isDefinedIn ex:RehabilitationGymContext ;
+    dul:isRoleOf ex:Robot01 .
+
+ex:TaskOpportunity_AssistedPatientRole_Suitable_Tablet01_OrientationMethod_Task_Tablet01_OrientationMethod a mai:TaskOpportunity ;
+    soma:definesBearer ex:Suitable_Tablet01_OrientationMethod ;
+    soma:definesTrigger ex:AssistedPatientRole ;
+    dul:definesTask ex:Task_Tablet01_OrientationMethod .
+
+mai:MigrationOpportunity a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass mai:MigratableAgent ;
+            owl:onProperty soma:definesBearer ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass [ a owl:Class ;
+                    owl:intersectionOf ( mai:SuitableEmbodiment [ a owl:Restriction ;
+                                owl:onProperty [ owl:inverseOf soma:definesBearer ] ;
+                                owl:someValuesFrom mai:TaskOpportunity ] ) ] ;
+            owl:onProperty soma:definesTrigger ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        soma:Affordance .
+
+mai:MotionCapability a owl:Class ;
+    rdfs:subClassOf mai:PhysicalCapability .
+
+mai:NavigationCapability a owl:Class ;
+    rdfs:subClassOf soma:Capability,
+        mai:MotionCapability .
+
+mai:Tablet a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty dul:hasQuality ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:intersectionOf ( mai:CommunicationCapability mai:ComputationalCapability ) ] ],
+        mai:Embodiment .
+
+ex:AssistedPatientRole a mai:AssistedPerson ;
+    dul:isDefinedIn ex:HospitalRoomContext ;
+    dul:isRoleOf ex:Patient .
+
+ex:CognitiveEngagementQuality a mai:HumanQuality ;
+    dul:isQualityOf ex:Patient .
+
+ex:MigratableAgentRole a mai:MigratableAgent ;
+    dul:isDefinedIn ex:HospitalRoomContext,
+        ex:RehabilitationGymContext .
+
+ex:PersistentAgent a dul:CognitiveAgent ;
+    dul:hasRole ex:MigratableAgentRole .
+
+ex:RequiredCommunicationCapability a mai:CommunicationCapability .
+
+ex:Robot01 a mai:Embodiment ;
+    mai:hasContext ex:RehabilitationGymContext ;
+    dul:hasQuality ex:RobotCommunicationCapability,
+        ex:RobotNavigationCapability .
+
+ex:RobotCommunicationCapability a mai:CommunicationCapability .
+
+ex:RobotNavigationCapability a mai:NavigationCapability .
+
+ex:Tablet01 a mai:Embodiment,
+        mai:Tablet ;
+    mai:hasContext ex:HospitalRoomContext ;
+    dul:hasQuality ex:TabletCommunicationCapability .
+
+ex:TabletCommunicationCapability a mai:CommunicationCapability .
+
+ex:Task_Robot01_OrientationMethod a mai:EmbodiedTask ;
+    dul:isDefinedIn ex:OrientationMethod .
+
+mai:ComputationalCapability a owl:Class ;
+    rdfs:subClassOf soma:Capability .
+
+mai:EnvironmentPerceptionCapability a owl:Class ;
+    rdfs:subClassOf mai:PerceptionCapability .
+
+mai:HumanBehaviorPerceptionCapability a owl:Class ;
+    rdfs:subClassOf mai:EnvironmentPerceptionCapability .
+
+mai:MigratableAgent a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty dul:isDefinedIn ;
+            owl:someValuesFrom mai:InteractionContext ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom mai:Embodiment ;
+            owl:onProperty dul:hasPart ],
+        [ a owl:Restriction ;
+            owl:onProperty dul:classifies ;
+            owl:someValuesFrom soma:CognitiveAgent ],
+        dul:Role .
+
+mai:Monitoring a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass mai:PerceptionCapability ;
+            owl:onProperty mai:describesFunctionality ],
+        mai:AssistiveMethod .
+
+mai:ObjectInteractionCapability a owl:Class ;
+    rdfs:subClassOf mai:PhysicalCapability .
+
+mai:TaskOpportunity a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass [ a owl:Class ;
+                    owl:intersectionOf ( mai:SuitableEmbodiment [ a owl:Restriction ;
+                                owl:onProperty dul:isRoleOf ;
+                                owl:someValuesFrom [ a owl:Class ;
+                                        owl:intersectionOf ( mai:Embodiment [ a owl:Restriction ;
+                                                    owl:onProperty mai:hasContext ;
+                                                    owl:someValuesFrom mai:InteractionContext ] ) ] ] ) ] ;
+            owl:onProperty soma:definesBearer ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass mai:EmbodiedTask ;
+            owl:onProperty dul:definesTask ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        [ a owl:Restriction ;
+            owl:onClass [ a owl:Class ;
+                    owl:intersectionOf ( mai:AssistedPerson [ a owl:Restriction ;
+                                owl:onProperty dul:isRoleOf ;
+                                owl:someValuesFrom [ a owl:Class ;
+                                        owl:intersectionOf ( dul:Person [ a owl:Restriction ;
+                                                    owl:onProperty mai:hasContext ;
+                                                    owl:someValuesFrom mai:InteractionContext ] [ a owl:Restriction ;
+                                                    owl:onProperty dul:hasQuality ;
+                                                    owl:someValuesFrom mai:HumanQuality ] ) ] ] ) ] ;
+            owl:onProperty soma:definesTrigger ;
+            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ],
+        soma:Affordance .
+
+mai:hasEffectOn a owl:ObjectProperty ;
+    rdfs:domain mai:AgentiveMethod ;
+    rdfs:range dul:Quality ;
+    rdfs:subPropertyOf dul:associatedWith .
+
+ex:OrientationMethod a mai:AssistiveMethod ;
+    mai:describesFunctionality ex:RequiredCommunicationCapability ;
+    mai:hasEffectOn ex:CognitiveEngagementQuality .
+
+ex:Patient a dul:NaturalPerson ;
+    mai:hasContext ex:HospitalRoomContext .
+
+ex:Suitable_Tablet01_OrientationMethod a mai:SuitableEmbodiment ;
+    soma:hasTask ex:Task_Tablet01_OrientationMethod ;
+    dul:isDefinedIn ex:HospitalRoomContext ;
+    dul:isRoleOf ex:Tablet01 .
+
+ex:Task_Tablet01_OrientationMethod a mai:EmbodiedTask ;
+    dul:isDefinedIn ex:OrientationMethod .
+
+mai:ActivityMonitoring a owl:Class ;
+    rdfs:subClassOf mai:Monitoring .
+
+mai:EntityDetectionCapability a owl:Class ;
+    rdfs:subClassOf mai:PerceptionCapability .
+
+mai:HealthStateMonitoring a owl:Class ;
+    rdfs:subClassOf mai:Monitoring .
+
+mai:HumanQuality a owl:Class ;
+    rdfs:subClassOf dul:Quality .
+
+mai:ProfessionalContext a owl:Class ;
+    rdfs:subClassOf mai:InteractionContext .
+
+mai:SocialCapability a owl:Class ;
+    rdfs:subClassOf soma:Capability .
+
+mai:Stimulation a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty mai:describesFunctionality ;
+            owl:someValuesFrom mai:PhysicalCapability ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass mai:PerceptionCapability ;
+            owl:onProperty mai:describesFunctionality ],
+        mai:AssistiveMethod .
+
+ex:RehabilitationGymContext a mai:InteractionContext,
+        mai:ProfessionalContext .
+
+mai:AgentiveMethod a owl:Class ;
+    rdfs:comment "A description that defines procedural execution of tasks that can be carried out thorugh some embodied agentive entity." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Class ;
+                    owl:intersectionOf ( soma:Capability [ a owl:Restriction ;
+                                owl:allValuesFrom mai:Embodiment ;
+                                owl:onProperty soma:isQualeOf ] ) ] ;
+            owl:onProperty mai:describesFunctionality ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Class ;
+                    owl:intersectionOf ( dul:Quality [ a owl:Restriction ;
+                                owl:allValuesFrom dul:PhysicalObject ;
+                                owl:onProperty soma:isQualeOf ] ) ] ;
+            owl:onProperty mai:hasEffectOn ],
+        dul:Method .
+
+mai:AssistedPerson a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty dul:hasQuality ;
+            owl:someValuesFrom mai:HumanQuality ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom dul:NaturalPerson ;
+            owl:onProperty dul:isRoleOf ],
+        [ a owl:Restriction ;
+            owl:onProperty dul:isDefinedIn ;
+            owl:someValuesFrom mai:InteractionContext ],
+        dul:Role .
+
+mai:EmbodiedTask a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom mai:AgentiveMethod ;
+            owl:onProperty dul:isDefinedIn ],
+        dul:Task .
+
+mai:PhysicalCapability a owl:Class ;
+    rdfs:subClassOf soma:Capability .
+
+mai:SuitableEmbodiment a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom mai:InteractionContext ;
+            owl:onProperty dul:isDefinedIn ],
+        [ a owl:Restriction ;
+            owl:onProperty soma:hasTask ;
+            owl:someValuesFrom mai:EmbodiedTask ],
+        [ a owl:Restriction ;
+            owl:onProperty soma:isPerformerAffordedBy ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:intersectionOf ( soma:Capability [ a owl:Restriction ;
+                                owl:onProperty [ owl:inverseOf mai:describesFunctionality ] ;
+                                owl:someValuesFrom mai:AgentiveMethod ] ) ] ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Class ;
+                    owl:intersectionOf ( mai:Embodiment [ a owl:Restriction ;
+                                owl:onProperty dul:hasQuality ;
+                                owl:someValuesFrom soma:Capability ] ) ] ;
+            owl:onProperty dul:isRoleOf ],
+        soma:PerformerRole .
+
+mai:hasContext a owl:ObjectProperty ;
+    rdfs:range mai:InteractionContext ;
+    rdfs:subPropertyOf dul:isReferenceOf .
+
+mai:AssistiveMethod a owl:Class ;
+    rdfs:comment "Describe methods that are carried out by agents with the aim of providing a target Person with assistance. Each assistive method describes a type of procedure targeting one or more Quality of an assisted Person and can be executed thorugh a certain number of actions" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass [ a owl:Class ;
+                    owl:intersectionOf ( dul:Quality [ a owl:Restriction ;
+                                owl:allValuesFrom [ a owl:Class ;
+                                        owl:intersectionOf ( dul:Person [ a owl:Restriction ;
+                                                    owl:onProperty dul:hasRole ;
+                                                    owl:someValuesFrom mai:AssistedPerson ] ) ] ;
+                                owl:onProperty dul:isQualityOf ] ) ] ;
+            owl:onProperty mai:hasEffectOn ],
+        mai:AgentiveMethod .
+
+mai:PerceptionCapability a owl:Class ;
+    rdfs:subClassOf soma:Capability .
+
+ex:HospitalRoomContext a mai:InteractionContext,
+        mai:ProfessionalContext .
+
+mai:describesFunctionality a owl:ObjectProperty ;
+    rdfs:comment "Relates a method with a capability necessary for its execution and thus characterizing the functional quality of that capability" ;
+    rdfs:domain dul:Method ;
+    rdfs:range soma:Capability ;
+    rdfs:subPropertyOf soma:describesQuality .
+
+mai:CommunicationCapability a owl:Class ;
+    rdfs:subClassOf mai:SocialCapability .
+
+mai:Embodiment a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom mai:InteractionContext ;
+            owl:onProperty mai:hasContext ],
+        [ a owl:Restriction ;
+            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onClass soma:Capability ;
+            owl:onProperty dul:hasQuality ],
+        dul:DesignedArtifact .
+
+mai:InteractionContext a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty [ owl:inverseOf mai:hasContext ] ;
+            owl:someValuesFrom mai:AssistedPerson ],
+        dul:Configuration .
+

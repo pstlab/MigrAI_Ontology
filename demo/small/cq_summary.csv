@@ -1,0 +1,7 @@
+CQ,status,result_rows,query_time_ms,error
+CQ1,PASS,2,177.942,
+CQ2,PASS,3,5.327,
+CQ3,PASS,2,10.435,
+CQ4,PASS,1,7.788,
+CQ5,PASS,6,4.727,
+CQ6,PASS,1,9.091,
